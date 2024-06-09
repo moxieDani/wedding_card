@@ -10,6 +10,7 @@ import Cheerup from '@/components/Cheerup.svelte';
 import Footer from '@/components/Footer.svelte';
 import FABs from '@/components/FABs.svelte';
 import Calendar from '@/components/Calendar.svelte';
+import Youtube from '@/components/Youtube.svelte';
 
 const setScreenSize = () => {
   const vh = window.innerHeight * 0.01;
@@ -28,8 +29,8 @@ onMount(() => {
   <Welcome />
   <div class="seperator" />
   <Sentence />
-  <div class="seperator" />
   <Calendar year={2024} month={9} theDay={7} />
+  <Youtube />
   <div class="seperator" />
   <Gallery />
   <div class="seperator" />
