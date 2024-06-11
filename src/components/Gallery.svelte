@@ -64,7 +64,8 @@ onMount(() => {
 });
 </script>
 
-<section class="container flex-center">
+<section class="gallery-title flex-center">갤 러 리</section>
+<section class="flex-center">
   <div class="gallery">
     {#each imageUrls as url, index (index)}
       {#if index < 15 || showMorePhotos}
@@ -133,17 +134,25 @@ onMount(() => {
     {/if}
   </div>
 </section>
+
 <style>
-.container {
-  width: 100%;
-  padding: 1rem;
-  background-color: #fff;
-}
 .gallery {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   column-gap: 4px;
   row-gap: 4px;
+}
+.gallery-title {
+  position: relative;
+  padding-top: 2.938rem;
+  margin-bottom: 2.5rem;
+  font-family: 'KoPub Batang';
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.250rem;
+  text-align: center;
+  color: #111;
+  letter-spacing: 0.4em;
 }
 .gallery img {
   object-fit: cover;
