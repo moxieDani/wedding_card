@@ -16,19 +16,19 @@ const countUp = async () => {
 
   timerId = window.setTimeout(() => (animated = false), 800);
 };
+
 </script>
 
-<button class="like" on:click={countUp} class:liked>
-  <svg width="23" height="20" viewBox="0 0 23 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path
-      d="M11.9649 3.12832C8.29171 -2.5454 0.857422 0.545461 0.857422 6.72603C0.857422 11.3672 11.0494 18.6272 11.9649 19.5712C12.8866 18.6272 22.5717 11.3672 22.5717 6.72603C22.5717 0.592318 15.6449 -2.5454 11.9649 3.12832Z"
-      fill="#3E4373"
-    />
-  </svg>
-  <i class:count-motion={animated}>{count}</i>
-  <span class:bubble-motion={animated} />
-</button>
-
+  <button class="like" on:click={countUp} class:liked>
+    <svg width="23" height="20" viewBox="0 0 23 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M11.9649 3.12832C8.29171 -2.5454 0.857422 0.545461 0.857422 6.72603C0.857422 11.3672 11.0494 18.6272 11.9649 19.5712C12.8866 18.6272 22.5717 11.3672 22.5717 6.72603C22.5717 0.592318 15.6449 -2.5454 11.9649 3.12832Z"
+        fill="#3E4373"
+      />
+    </svg>
+    <i class="count-motion" class:active={animated}>{count}<br>💕</i>
+    <span class:bubble-motion={animated} />
+  </button>
 <style lang="scss">
 .like {
   position: relative;
@@ -87,10 +87,9 @@ i {
   font-size: 12px;
   font-weight: 600;
   padding: 6px 10px;
-  color: white;
-  background: #f65c8a;
+  color: f65c8a;
+  background: #ffeedd;
   border-radius: 24px;
-  line-height: 12px;
   z-index: -9;
   opacity: 0;
   transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -99,7 +98,8 @@ i {
 }
 
 .count-motion {
-  transform: translatey(-160%);
+  min-width: 100%;
+  transform: translatey(-105%);
   opacity: 1;
 }
 
