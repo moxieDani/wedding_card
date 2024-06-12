@@ -29,7 +29,7 @@ onMount(() => {
   <Welcome />
   <div class="seperator" />
   <Sentence />
-  <Calendar year={2024} month={9} theDay={7} />
+  <Calendar />
   <Youtube />
   <div class="seperator" />
   <Gallery />
