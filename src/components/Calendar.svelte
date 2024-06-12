@@ -1,4 +1,12 @@
 <script lang="ts">
+	function getTdClass(index: number, day: number): string {
+		let ret = '';
+		if(index === 0 || index === 6)
+			ret += 'ui-datepicker-week-end';
+		if(day === 7)
+			ret += ' ui-datepicker-days-cell-over ui-datepicker-current-day ui-state-active ui-state-hover';
+		return ret;
+	}
 	function getDDay(): number {
 		const year = 2024;
 		const month = 9;
@@ -22,16 +30,19 @@
 <section class="calendar-section">
 	<div class="calendar-wrap">
 		<div id="calendar" class="hasDatepicker">
-			<div class="ui-datepicker-inline ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" style="display: block;">
+			<div class="ui-datepicker" style="display: block;">
 				<div class="ui-datepicker-header ui-widget-header ui-helper-clearfix ui-corner-all">
-					<div class="ui-datepicker-title"><span class="ui-datepicker-month"><strong>9</strong>
-							September</span>&nbsp;<span class="ui-datepicker-year">2024</span></div>
+					<div class="ui-datepicker-title">
+						<span class="ui-datepicker-month"><strong>9</strong>
+						September</span>&nbsp;
+						<span class="ui-datepicker-year">2024</span>
+					</div>
 				</div>
 				<table class="ui-datepicker-calendar">
 					<thead>
 						<tr>
 							{#each daysOfWeek as day, index}
-								<th scope="col" class="{index === 0 || index === 6 ? 'ui-datepicker-week-end' : ''}">
+								<th scope="col" class="{getTdClass(index, 0)}">
 									<span title={day}>{day}</span>
 								</th>
 							{/each}
@@ -42,12 +53,9 @@
 							<tr>
 								{#each week as day, index}
 									{#if day}
-										<td class="{index === 0 || index === 6 ? 'ui-datepicker-week-end' : ''} {day === 7 ? 'ui-datepicker-days-cell-over ui-datepicker-current-day' : ''}"
-											data-handler="selectDay" data-event="click" data-month="9" data-year="2024">
-											<a class="ui-state-default {day === 7 ? 'ui-state-active ui-state-hover' : ''}" href={'#'}>{day}</a>
+										<td class="{getTdClass(index, day)}" data-handler="selectDay" data-event="click">
+											<a class="ui-state-default {getTdClass(index, day)}" href={'#'}>{day}</a>
 										</td>
-									{:else}
-										<td class="ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td>
 									{/if}
 								{/each}
 							</tr>
@@ -56,7 +64,7 @@
 				</table>
 
 				{#if DDAY >= 0}
-					<p class="flex-center">{DDAY > 0 ? '결혼식까지 '+DDAY+'일 남았습니다.' : 'D-DAY!'}</p>
+					<p class="flex-center" style="margin-top:6%; margin-bottom:5%;">{DDAY > 0 ? '결혼식까지 '+DDAY+'일 남았습니다.' : 'D-DAY!'}</p>
 				{/if}
 			</div>
 		</div>
