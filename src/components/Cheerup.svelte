@@ -30,28 +30,54 @@ type MessageRawObject = { [datetime: string]: { name: string; text: string } };
 type Message = { id: string; name: string; text: string; datetime: string };
 let heartCount = 0;
 let messages: Message[] = [];
+let displayedMessages: Message[] = [];
 let typedNickname = '';
 let typedMessage = '';
+let currentPage = 1;
+const messagesPerPage = 6;
 $: enabledSendButton = typedNickname.length > 0 && typedMessage.length > 0;
 
 const onClickHeart = () => {
   update(heartsRef, { count: increment(1) });
 };
+
 const onSubmit = () => {
   const name = typedNickname.trim();
   const text = typedMessage.trim();
   if (name.length === 0 || text.length === 0) {
     alert('빈 공백은 안됩니다. :(');
+    return;
   }
   const datetime = Date.now().toString();
   update(messagesRef, { [datetime]: { name, text } });
+  typedNickname = '';
   typedMessage = '';
 };
-// 내림차순 정렬
+
 const sortString = (a: string, b: string) => {
   if (a > b) return -1;
   if (a < b) return 1;
   return 0;
+};
+
+const updateDisplayedMessages = () => {
+  const start = (currentPage - 1) * messagesPerPage;
+  const end = start + messagesPerPage;
+  displayedMessages = messages.slice(start, end);
+};
+
+const goPrePage = () => {
+  if (currentPage > 1) {
+    currentPage -= 1;
+    updateDisplayedMessages();
+  }
+};
+
+const goNextPage = () => {
+  if (currentPage < Math.ceil(messages.length / messagesPerPage)) {
+    currentPage += 1;
+    updateDisplayedMessages();
+  }
 };
 
 onMount(() => {
@@ -67,6 +93,7 @@ onMount(() => {
         return { id, datetime, ...value };
       })
       .sort((a, b) => sortString(a.datetime, b.datetime));
+    updateDisplayedMessages();
   });
 });
 </script>
@@ -89,7 +116,7 @@ onMount(() => {
       </div>
     </form>
     <ul class="message-list">
-      {#each messages as message (message.id)}
+      {#each displayedMessages as message (message.id)}
         <li class="message-item">
           <span class="message-item-name">{message.name}</span>
           <span class="message-item-date">{message.datetime}</span>
@@ -105,6 +132,13 @@ onMount(() => {
         </li>
       {/if}
     </ul>
+    <div class="paging">
+      <a href="javascript:;" class="prev" on:click={goPrePage}>&lt;</a>
+      {#each Array(Math.ceil(messages.length / messagesPerPage)).fill(0) as _, i}
+      <a href="javascript:void(0);" class="{currentPage === i + 1 ? 'on' : ''}" on:click={() => { currentPage = i + 1; updateDisplayedMessages(); }}>{i + 1}</a>
+      {/each}
+      <a href="javascript:;" class="next" on:click={goNextPage}>&gt;</a>
+    </div>
     {#if messages.length > 0}
       <div class="notice">😅 축하글 수정/삭제는 <br />신랑에게 문의해주세요 :)</div>
     {/if}
@@ -152,6 +186,13 @@ h2 {
   color: #fff;
   font-weight: bold;
   flex-shrink: 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.message-form-button:disabled {
+  background: #f65c8a80;
+  cursor: not-allowed;
 }
 .message-list {
   min-height: 300px;
@@ -182,5 +223,41 @@ h2 {
 .notice {
   color: gray;
   padding: 2rem 0;
+}
+.paging {
+  position: relative;
+  width: 100%;
+  background: #fff;
+  text-align: center;
+  padding: 1rem 0;
+  color: #111;
+  font-size: 0.875rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.paging a {
+  color: #007bff;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s;
+}
+.paging a:hover {
+  background-color: #007bff;
+  color: white;
+}
+.paging a.on {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+.paging a.prev, .paging a.next {
+  font-weight: bold;
+  background-color: #f1f1f1;
+}
+.paging a.prev:hover, .paging a.next:hover {
+  color: #007bff;;
 }
 </style>
