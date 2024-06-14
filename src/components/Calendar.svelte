@@ -1,21 +1,18 @@
 <script lang="ts">
   function getTdClass(index: number, day: number): string {
-    let ret = '';
-    if(index === 0 || index === 6)
-      ret += 'datepicker-week-end';
-    if(day === 7)
-      ret += ' datepicker-days-cell-over datepicker-current-day state-active state-hover';
-    return ret;
+    let classes = [];
+    if (index === 0) classes.push('weekend');
+    if (day === 7) classes.push('today', 'current-day', 'active', 'hover');
+    return classes.join(' ');
   }
+  
   function getDDay(): number {
-    const year = 2024;
-    const month = 9;
-    const day = 7;
-    const curDate: Date = new Date();
-    const tarDate: Date = new Date(year, month - 1, day);
-    const gap = tarDate.getTime() - curDate.getTime();
-    return Math.ceil(gap / (1000 * 60 * 60 * 24));
+    const targetDate = new Date(2024, 9-1, 7);  // 월은 0부터 시작하므로 9월은 9-1로 설정
+    const currentDate = new Date();
+    const timeDifference = targetDate.getTime() - currentDate.getTime();
+    return Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
   }
+
   let DDAY = getDDay();
   const daysOfWeek = ['S', 'M', 'T', 'W', 'T', 'F', 'Sa'];
   const weeks = [
@@ -29,21 +26,20 @@
 
 <section class="calendar-section">
   <div class="calendar-wrap">
-    <div id="calendar" class="hasDatepicker datepicker" style="display: block;">
-      <div class="datepicker-header widget-header helper-clearfix corner-all">
-        <div class="datepicker-title">
-          <span class="datepicker-month"><strong>9</strong> September</span>&nbsp;
-          <span class="datepicker-year">2024</span>
+    <div id="calendar" class="datepicker">
+      <div class="header">
+        <div class="title">
+          <span class="month"><strong>9</strong>月</span>
+        </div>
+        <div class="day-time">
+          <span class="day">토요일</span> <span class="time">pm 2:00</span>
         </div>
       </div>
-      <div class="day-time">
-        <span class="day">토요일</span> <span class="time">pm 2:00</span>
-      </div>
-      <table class="datepicker-calendar">
+      <table class="calendar">
         <thead>
           <tr>
             {#each daysOfWeek as day, index}
-              <th scope="col" class="{getTdClass(index, 0)}">
+              <th class="{getTdClass(index, 0)}">
                 <span title={day}>{day}</span>
               </th>
             {/each}
@@ -77,6 +73,7 @@
     </div>
   </div>
 </section>
+
 <style>
 table {
   width: 100%;
@@ -89,10 +86,9 @@ table {
 .calendar-wrap {
   position: relative;
 }
-.calendar-wrap .day-time {
+.day-time {
   position: absolute;
   padding-top: 4%;
-  margin-right: 1%;
   right: 1.563rem;
   top: 0.813rem;
   white-space: nowrap;
@@ -107,67 +103,66 @@ table {
   padding-bottom: 0.938rem;
   padding: 0 1.25rem;
 }
-.datepicker-header {
+.header {
   margin: 0 -1.25rem 0.938rem;
 }
-.datepicker-title {
+.title {
   padding: 0.625rem 1.563rem 0;
   border-bottom: 1px solid #eee;
   padding-top: 5%;
 }
-.datepicker-month {
+.month {
   font-family: "campton";
   font-size: 1.5rem;
   line-height: 2.5rem;
 }
-.datepicker-month strong {
+.month strong {
   margin-left: 2%;
   font-size: 2.5rem;
   font-weight: bold;
+  letter-spacing: 0.2em;
 }
-.datepicker-calendar {
+.calendar {
   text-align: center;
   table-layout: fixed;
 }
-.datepicker-calendar thead,
-.datepicker-year {
+.calendar thead {
   display: none;
 }
-.datepicker-calendar tbody td {
+.calendar tbody td {
   padding: 0.344rem;
   font-size: 0;
   line-height: 0;
   pointer-events: none;
 }
-.datepicker-calendar tbody td span,
-.datepicker-calendar tbody td a {
+.calendar tbody td span,
+.calendar tbody td a {
   display: block;
   margin: 0 auto;
-  width: 2.8125rem;
-  height: 2.8125rem;
+  width: 2.5rem;
+  height: 2.5rem;
   text-decoration: none;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-family: "Helvetica Neue";
-  line-height: 2.8125rem;
+  line-height: 2.5rem;
   color: #777;
   border: 1px solid transparent;
   border-radius: 50%;
 }
-.datepicker-calendar tbody td.datepicker-week-end:first-child span,
-.datepicker-calendar tbody td.datepicker-week-end:first-child a {
+tbody td.weekend span{
   color: #ff6666;
 }
-.datepicker-calendar tbody td.datepicker-current-day span,
-.datepicker-calendar tbody td.datepicker-current-day a {
+.current-day span,
+.current-day a {
   border-color: #000;
   background-color: #000;
   color: #fff !important;
 }
 .d-day {
+  font-size: 0.94rem;
   display: flex;
   justify-content: center;
-  padding-top: 10%;
-  padding-bottom: 10%;
+  padding: 10% 0;
 }
 .heart {
   color: #ff4e7f;
