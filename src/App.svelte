@@ -11,6 +11,7 @@ import Footer from '@/components/Footer.svelte';
 import FABs from '@/components/FABs.svelte';
 import Calendar from '@/components/Calendar.svelte';
 import Youtube from '@/components/Youtube.svelte';
+import Survey from '@/components/JoinSurvey.svelte';
 
 const setScreenSize = () => {
   const vh = window.innerHeight * 0.01;
@@ -37,6 +38,8 @@ onMount(() => {
   <Map />
   <div class="seperator" />
   <Heart />
+  <div class="seperator" />
+  <Survey />
   <div class="seperator" />
   <Cheerup />
   <div class="seperator" />
