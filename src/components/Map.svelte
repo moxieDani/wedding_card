@@ -2,6 +2,7 @@
   import { onMount } from 'svelte';
   import MapMark from '@/assets/map-mark.png';
   import MapLink from '@/components/MapLink.svelte';
+  import VisitInfo from '@/components/VisitInfo.svelte';
 
   let naverMap;
   let elluce = { lat: 36.4247938, lng: 127.397869 };
@@ -88,6 +89,8 @@
 </section>
 
 <MapLink />
+
+<VisitInfo />
 
 <style>
 section {
