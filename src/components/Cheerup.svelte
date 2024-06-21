@@ -99,12 +99,12 @@ onMount(() => {
 </script>
 
 <section>
-  <h2>축하 메시지</h2>
+  <h2 class="maru-buri">축하글</h2>
 
-  <div>
-    권기순
+  <div class="congrats-container">
+    <span>권기순</span>
     <Button_Heart count={heartCount} onClick={onClickHeart} />
-    박서은
+    <span>박서은</span>
   </div>
 
   <div class="message-container">
@@ -133,14 +133,14 @@ onMount(() => {
       {/if}
     </ul>
     <div class="paging">
-      <a href="javascript:;" class="prev" on:click={goPrePage}>&lt;</a>
+      <a href={"javascript:;"} class="prev" on:click={goPrePage}>&lt;</a>
       {#each Array(Math.ceil(messages.length / messagesPerPage)).fill(0) as _, i}
-      <a href="javascript:void(0);" class="{currentPage === i + 1 ? 'on' : ''}" on:click={() => { currentPage = i + 1; updateDisplayedMessages(); }}>{i + 1}</a>
+      <a href={"javascript:void(0);"} class="{currentPage === i + 1 ? 'on' : ''}" on:click={() => { currentPage = i + 1; updateDisplayedMessages(); }}>{i + 1}</a>
       {/each}
-      <a href="javascript:;" class="next" on:click={goNextPage}>&gt;</a>
+      <a href={"javascript:;"} class="next" on:click={goNextPage}>&gt;</a>
     </div>
     {#if messages.length > 0}
-      <div class="notice">😅 축하글 수정/삭제는 <br />신랑에게 문의해주세요 :)</div>
+      <div class="notice">🎈축하글 수정/삭제는 <br />개발자(신랑)에게 문의해주세요 👨‍💻</div>
     {/if}
   </div>
 </section>
@@ -149,10 +149,18 @@ onMount(() => {
 section {
   padding: 2rem 1rem;
   text-align: center;
+  font-family: 'IM_Hyemin-Bold';
 }
-h2 {
-  font-size: 1.75rem;
-  margin-bottom:10%;
+.maru-buri {
+  margin-bottom: 5rem;
+}
+.congrats-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.congrats-container span {
+  margin: 0 0.5rem;
 }
 .message-container {
   min-width: 200px;
