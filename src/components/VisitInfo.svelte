@@ -5,7 +5,7 @@ import bus from '@/assets/bus.png';
 <div class="info">
   <div class="contain">
     <dl>
-      <dt>버스 안내</dt>
+      <dt>대중교통 안내</dt>
       <dd>대전 시내버스</dd>
       <dd class="bus-info">
         <span class="bus-item"><img src={bus} alt="버스 아이콘" class="bus-icon" />701</span>
@@ -15,7 +15,7 @@ import bus from '@/assets/bus.png';
       </dd>
     </dl>
     <dl>
-      <dt>주차 안내(2시간 무료 주차)</dt>
+      <dt>주차 안내(2시간 무료)</dt>
       <dd>호텔 & 컨벤션 주차장 : 지상</dd>
       <dd>북문 주차장 : 주차타워, 지하</dd>
       <dd>남문 주차장 : 지상, 지하</dd>
@@ -26,7 +26,7 @@ import bus from '@/assets/bus.png';
     </dl>
     <dl>
       <dt>신부측 피로연 안내</dt>
-      <dd>9월 2일(월) 오전 11시~오후8시 / 강구 나비산식당</dd>
+      <dd>9월 2일(월) 오전 11시 ~ 오후 8시 / 강구 나비산식당</dd>
     </dl>
   </div>
 </div>
