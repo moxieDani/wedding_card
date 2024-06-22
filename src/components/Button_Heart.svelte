@@ -1,34 +1,30 @@
 <script lang="ts">
-// ref: https://dribbble.com/shots/12234916--Like-Button-for-Figma-Cool
-let animated = false;
-let liked = false;
-let timerId = -1;
+  // ref: https://dribbble.com/shots/12234916--Like-Button-for-Figma-Cool
+  let animated = false;
+  let liked = false;
+  let timerId = -1;
 
-export let count = 1;
-export let onClick = () => null;
+  export let count = 1;
+  export let onClick = () => null;
 
-const countUp = async () => {
-  window.clearTimeout(timerId);
-  animated = true;
-  if (!liked) liked = true;
-
-  onClick();
-
-  timerId = window.setTimeout(() => (animated = false), 800);
-};
-
+  const countUp = async () => {
+    window.clearTimeout(timerId);
+    animated = false;
+    await new Promise(resolve => setTimeout(resolve, 0));
+    animated = true;
+    if (!liked) liked = true;
+  
+    onClick();
+  
+    timerId = window.setTimeout(() => (animated = false), 800);
+  };
 </script>
 
-  <button class="like" on:click={countUp} class:liked>
-    <svg width="23" height="20" viewBox="0 0 23 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path
-        d="M11.9649 3.12832C8.29171 -2.5454 0.857422 0.545461 0.857422 6.72603C0.857422 11.3672 11.0494 18.6272 11.9649 19.5712C12.8866 18.6272 22.5717 11.3672 22.5717 6.72603C22.5717 0.592318 15.6449 -2.5454 11.9649 3.12832Z"
-        fill="#3E4373"
-      />
-    </svg>
-    <i class="count-motion" class:active={animated}>{count}<br>💕</i>
-    <span class:bubble-motion={animated} />
-  </button>
+<button class="like" on:click={countUp} class:liked class:shake={!liked}>
+  <span class:bubble-motion={animated} />
+  <p class="count-motion" class:active={animated}>{count}<br>💕</p>
+</button>
+
 <style lang="scss">
 .like {
   position: relative;
@@ -46,19 +42,11 @@ const countUp = async () => {
     z-index: -2;
     position: absolute;
     content: '';
-    display: block;
     width: 100%;
     height: 100%;
     background: #f6f6f8;
     border-radius: 12px;
     transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  }
-
-  svg {
-    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    path {
-      transition: all 0.2s ease;
-    }
   }
 
   &:hover,
@@ -68,38 +56,31 @@ const countUp = async () => {
       background: #feeef3;
       transform: scale(0.88);
     }
-    svg {
-      path {
-        fill: #f65c8a;
-      }
-    }
   }
 
-  &:active {
-    svg {
-      transform: scale(0.6);
-    }
+  &.shake {
+    animation: shake 0.25s infinite alternate;
   }
 }
 
-i {
+@keyframes shake {
+  0% { transform: translateY(-2.5px); }
+  100% { transform: translateY(2.5px); }
+}
+
+p {
   position: absolute;
   font-size: 12px;
   font-weight: 600;
   padding: 6px 10px;
-  color: f65c8a;
-  background: #ffeedd;
-  border-radius: 24px;
-  z-index: -9;
+  color: #f65c8a;
   opacity: 0;
   transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   font-family: -apple-system, sans-serif;
-  font-style: normal;
 }
 
 .count-motion {
   min-width: 100%;
-  transform: translatey(-105%);
   opacity: 1;
 }
 
