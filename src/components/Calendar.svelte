@@ -135,8 +135,7 @@ table {
   line-height: 0;
   pointer-events: none;
 }
-.calendar tbody td span,
-.calendar tbody td a {
+.calendar tbody td span {
   display: block;
   margin: 0 auto;
   width: 2.5rem;
@@ -152,8 +151,7 @@ table {
 tbody td.weekend span{
   color: #ff6666;
 }
-.current-day span,
-.current-day a {
+.current-day span {
   border-color: #000;
   background-color: #000;
   color: #fff !important;
