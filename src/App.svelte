@@ -108,7 +108,7 @@
     overflow-y: scroll;
   }
   .pv-box .fade-wrap {
-    transition: 1s;
+    transition: 2.5s;
     opacity: 1;
   }
   .pv-box .fade-wrap:not(.fade-in) {
