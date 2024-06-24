@@ -61,6 +61,18 @@ function onIframeLoad() {
 }
 
 function submitForm() {
+  if (!guest_selected) {
+    alert('신랑측 또는 신부측을 선택해주세요.');
+    return;
+  }
+  if (!attend_selected) {
+    alert('참석 여부를 선택해주세요.');
+    return;
+  }
+  if (!meal_selected) {
+    alert('식사 여부를 선택해주세요.');
+    return;
+  }
   form.submit();
   handleSubmit();
 }
@@ -97,7 +109,12 @@ function submitForm() {
               on:click={selectBox(value => (guest_selected = value))('groom')}
             >
               <div class="check_box flex-center">
-                <input type="radio" name="entry.203296518" value="신랑측" checked={guest_selected === 'groom'} />
+                <input
+                  type="radio"
+                  name="entry.203296518"
+                  value="신랑측"
+                  checked={guest_selected === 'groom'}
+                />
                 <span class="chk-txt">신랑측</span>
               </div>
             </div>
@@ -107,7 +124,12 @@ function submitForm() {
               on:click={selectBox(value => (guest_selected = value))('bride')}
             >
               <div class="check_box flex-center">
-                <input type="radio" name="entry.203296518" value="신부측" checked={guest_selected === 'bride'} />
+                <input
+                  type="radio"
+                  name="entry.203296518"
+                  value="신부측"
+                  checked={guest_selected === 'bride'}
+                />
                 <span class="chk-txt">신부측</span>
               </div>
             </div>
@@ -122,7 +144,12 @@ function submitForm() {
               on:click={selectBox(value => (attend_selected = value))('n')}
             >
               <div class="check_box flex-center">
-                <input type="radio" name="entry.1209815777" value="참석 가능" checked={attend_selected === 'n'} />
+                <input
+                  type="radio"
+                  name="entry.1209815777"
+                  value="참석 가능"
+                  checked={attend_selected === 'n'}
+                />
                 <span class="chk-txt">참석 가능</span>
               </div>
             </div>
@@ -132,7 +159,12 @@ function submitForm() {
               on:click={selectBox(value => (attend_selected = value))('y')}
             >
               <div class="check_box flex-center">
-                <input type="radio" name="entry.1209815777" value="참석 불가" checked={attend_selected === 'y'} />
+                <input
+                  type="radio"
+                  name="entry.1209815777"
+                  value="참석 불가"
+                  checked={attend_selected === 'y'}
+                />
                 <span class="chk-txt">참석 불가</span>
               </div>
             </div>
@@ -171,7 +203,7 @@ function submitForm() {
                   value="식사 불가능(답례품 수령)"
                   checked={meal_selected === 'n'}
                 />
-                <span class="chk-txt">식사 불가능<span class="sm-txt">(답례품 수령)</span></span>
+                <span class="chk-txt">식사 불가능<br /><span class="sm-txt">(답례품 수령)</span></span>
               </div>
             </div>
           </div>
@@ -280,7 +312,10 @@ form {
 }
 .check_box {
   display: flex;
+  justify-content: center;
   align-items: center;
+  width: 100%;
+  height: 100%;
 }
 .check_box input[type='radio'] {
   display: none;
