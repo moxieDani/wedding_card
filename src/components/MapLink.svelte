@@ -84,7 +84,7 @@
 }
 .map-icon-text {
   margin-top: 0.5rem;
-  font-family: 'maru-buri';
+  font-family: 'Noto Sans KR';
   font-size: 0.8rem;
   font-weight: 600;
   text-align: center;
