@@ -176,7 +176,7 @@ function submitForm() {
         </div>
         <div class="row-wrap">
           <p class="item-ttl">연락처</p>
-          <input type="text" name="entry.683743563" bind:value={phone} on:input={formatPhoneNumber} required />
+          <input type="tel" name="entry.683743563" bind:value={phone} on:input={formatPhoneNumber} required />
         </div>
         <div class="row-wrap">
           <p class="item-ttl">식사 여부</p>
@@ -325,6 +325,12 @@ form {
   color: #007bff;
 }
 input[type='text'] {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+input[type='tel'] {
   width: 100%;
   padding: 5px;
   border: 1px solid #ccc;
