@@ -1,4 +1,5 @@
 @import './tailwindcss.base.css';
+@import './sakura.css';
 @import url('https://hangeul.pstatic.net/hangeul_static/css/maru-buri.css');
 
 @font-face {
