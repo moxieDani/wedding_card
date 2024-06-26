@@ -92,11 +92,11 @@ onMount(() => {
   text-align: center;
 }
 .open-button {
-  font-size: 1rem;
-  font-family: 'IM_Hyemin-Bold';
+  font-size: 0.9rem;
+  font-family: 'Noto Sans KR';
 }
 .button-gap {
-  padding: 0.5rem;
+  padding: 1rem;
 }
 .hide {
   display: none;
@@ -151,10 +151,10 @@ onMount(() => {
   margin-bottom: 0.5rem;
 }
 .groom-bg-color {
-  background-color: #f29f05;
+  background-color: #b9e8ed;
 }
 .bride-bg-color {
-  background-color: #f2441d;
+  background-color: #fca6d9;
 }
 .account {
   color: rgba(0, 0, 0, 0.8);
