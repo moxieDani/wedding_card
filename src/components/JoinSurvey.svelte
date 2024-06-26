@@ -82,7 +82,7 @@ function submitForm() {
 <section class="survey-info flex-center">{문구}</section>
 <div class="flex-center">
   <button class="open-button" on:click={() => hideFocusedModal(true)}>
-    참석 여부 전달하기{submitted ? '(완료)' : ''}
+    참석 의사 전달하기{submitted ? '(완료)' : ''}
   </button>
 </div>
 
@@ -91,7 +91,7 @@ function submitForm() {
     <button class="close-button" on:click={() => hideFocusedModal(false)}>
       <img class="close-icon" src={close} alt="close-icon" />
     </button>
-    <h2 class="maru-buri flex-center">참석 여부 전달{submitted ? '완료' : '하기'}</h2>
+    <h2 class="maru-buri flex-center">참석 의사 전달{submitted ? '완료' : '하기'}</h2>
     <form
       bind:this={form}
       id="formId"
