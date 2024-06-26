@@ -32,7 +32,7 @@
           <span class="month"><strong>9</strong>月</span>
         </div>
         <div class="day-time">
-          <span class="day">토요일</span> <span class="time">pm 2:00</span>
+          <span class="day">토요일</span> <span class="time">오후 2시</span>
         </div>
       </div>
       <table class="calendar">
@@ -93,7 +93,7 @@ table {
   top: 0.813rem;
   white-space: nowrap;
   font-family: "campton";
-  font-size: 1.2rem;
+  font-size: 1rem;
   line-height: 2.5rem;
   color: #111;
 }
