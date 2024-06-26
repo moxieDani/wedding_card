@@ -157,7 +157,8 @@ tbody td.weekend span{
   color: #fff !important;
 }
 .d-day {
-  font-size: 0.94rem;
+  font-family: "campton";
+  font-size: 1rem;
   display: flex;
   justify-content: center;
   padding: 10% 0;

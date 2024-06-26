@@ -75,13 +75,12 @@ onMount(() => {
       </h3>
 
       {#each type === '신랑' ? hearts.groom : hearts.bride as person, index (index)}
-        <div style="font-family: MaruBuri; font-size:1rem;">{person.name}</div>
+        <div style="padding-left: 10%; font-family: MaruBuri; font-size:1rem;">{person.name}</div>
         <div class="modal-item" on:click={copyText(person.account)} role="none">
           <div class="account">{person.account}</div>
           <div class="account-copy-text">복사</div>
         </div>
       {/each}
-      <div class="modal-footer">계좌번호 클릭시, 붙여넣기 가능한 텍스트로 복사됩니다.</div>
     </section>
   {/each}
 </div>
@@ -130,17 +129,12 @@ onMount(() => {
   margin-bottom: 1.2rem;
 }
 .modal-item {
-  border: 1px solid #ececec;
+  font-family: 'MaruBuri';
   border-radius: 0.5rem;
   cursor: pointer;
-  margin-bottom: 1rem;
-  padding: 0.9rem;
+  margin-bottom: 2rem;
   top: 0; /* 화면의 가장 위로 */
   z-index: 1000; /* 다른 요소들 위로 */
-}
-.modal-footer {
-  font-size: 0.75rem;
-  text-align: right;
 }
 .img-icon {
   display: inline-block;
@@ -157,15 +151,14 @@ onMount(() => {
   background-color: #fca6d9;
 }
 .account {
+  padding-left: 10%;
   color: rgba(0, 0, 0, 0.8);
-  font-weight: 600;
-  font-size: 1.15rem;
+  font-size: 1rem;
 }
 .account-copy-text {
   position: absolute;
   right: 10%;
   transform: translateY(-100%);
-  color: blue;
   font-weight: 600;
   font-size: 1rem;
 }
