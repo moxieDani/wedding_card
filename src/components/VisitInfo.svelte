@@ -6,8 +6,8 @@ import bus from '@/assets/bus.png';
   <div class="contain">
     <dl>
       <dt>대중교통 안내</dt>
-      <dd>대전 시내버스</dd>
       <dd class="bus-info">
+        <span class="bus-item">대전 시내버스</span>
         <span class="bus-item"><img src={bus} alt="버스 아이콘" class="bus-icon" />701</span>
         <span class="bus-item"><img src={bus} alt="버스 아이콘" class="bus-icon" />704</span>
         <span class="bus-item"><img src={bus} alt="버스 아이콘" class="bus-icon" />705</span>
@@ -16,9 +16,7 @@ import bus from '@/assets/bus.png';
     </dl>
     <dl>
       <dt>주차 안내(2시간 무료)</dt>
-      <dd>호텔 & 컨벤션 주차장 : 지상</dd>
-      <dd>북문 주차장 : 주차타워, 지하</dd>
-      <dd>남문 주차장 : 지상, 지하</dd>
+      <dd>호텔 & 컨벤션 주차장 : 지상<br/>북문 주차장 : 주차타워, 지하<br/>남문 주차장 : 지상, 지하</dd>
     </dl>
     <dl>
       <dt>전세 버스 안내</dt>
@@ -86,16 +84,15 @@ dt {
   word-break: break-all;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   box-sizing: border-box;
-  margin: 0;
-  margin-top: 0.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
   padding: 0;
   list-style: none;
   display: block;
-  margin-bottom: 1rem;
   font-family: 'Noto Sans KR';
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 600;
-  line-height: 1.3rem;
+  line-height: 0.3rem;
   color: #111;
 }
 dd {
@@ -111,9 +108,9 @@ dd {
   font-family: 'Noto Sans KR';
   font-size: 1rem;
   font-weight: 400;
-  line-height: 1.4rem;
   color: #626262;
   white-space: pre-wrap;
+  margin-bottom: 1rem;  
 }
 .bus-icon {
   width: 1em;
@@ -133,7 +130,6 @@ dd {
   display: flex;
   align-items: center;
   margin-right: 0.5em; /* 아이템 간 간격 */
-  padding: 0.2em; /* 여백 추가 */
   border-radius: 0.2em; /* 모서리 둥글게 */
 }
 </style>
