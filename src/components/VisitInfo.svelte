@@ -15,7 +15,7 @@ import bus from '@/assets/bus.png';
       </dd>
     </dl>
     <dl>
-      <dt>주차 안내(2시간 무료)</dt>
+      <dt>주차 안내 (2시간 무료)</dt>
       <dd>호텔 & 컨벤션 주차장 : 지상<br/>북문 주차장 : 주차타워, 지하<br/>남문 주차장 : 지상, 지하</dd>
     </dl>
     <dl>
