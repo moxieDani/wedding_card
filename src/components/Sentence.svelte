@@ -3,12 +3,12 @@ const 문구1 = `멈출 새 없이 바쁘게 걷다가
 지친 걸음을 잠시 멈춰
 운명처럼 만난 저희 두 사람.`;
 
-const 문구2 = `함께 걸으니
-홀로 걸었을 때보다
-더 아름다운 세상을 만났습니다.`;
+const 문구2 = `함께 걷는 길은
+홀로 걷던 것보다
+더 아름다웠습니다.`;
 
 const 문구3 = `이제는 서로가 있기에
-때론 멈춰 쉬어갈 수 있으며
+서로의 곁에서 쉴 수 있고
 더 멀리 갈 수 있습니다.`;
 
 const 문구4 = `저희 두 사람이 앞으로의 긴 여정에
@@ -20,18 +20,10 @@ const 문구4 = `저희 두 사람이 앞으로의 긴 여정에
 
 <section class="greeting-section">
   <div class="sec-tit maru-buri flex-center">이제 서로, 평생 함께</div>
-  <div class="sec-txt">
-    {문구1}
-  </div>
-  <div class="sec-txt">
-    {문구2}
-  </div>
-  <div class="sec-txt">
-    {문구3}
-  </div>
-  <div class="sec-txt">
-    {문구4}
-  </div>
+  <div class="sec-txt">{문구1}</div>
+  <div class="sec-txt">{문구2}</div>
+  <div class="sec-txt">{문구3}</div>
+  <div class="sec-txt">{문구4}</div>
   <div class="info flex-center">
     <div class="ib">
       <div class="tb">
