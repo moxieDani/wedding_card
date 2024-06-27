@@ -152,7 +152,7 @@ section {
   font-family: 'IM_Hyemin-Bold';
 }
 .maru-buri {
-  margin-bottom: 5rem;
+  margin-bottom: 0rem;
 }
 .congrats-container {
   display: flex;
