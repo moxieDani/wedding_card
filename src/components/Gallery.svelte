@@ -6,7 +6,7 @@ import 'photoswipe/dist/photoswipe.css';
 import 'photoswipe/dist/default-skin/default-skin.css';
 import { onMount } from 'svelte';
 
-const imageUrls = Array.from({ length: 41 }, (_, i) => `https://moxie2ks.synology.me/wedding/gallery/${i}-960.webp`);
+const imageUrls = Array.from({ length: 24 }, (_, i) => `https://moxie2ks.synology.me/wedding/gallery/${i}-960.webp`);
 const srcsets = imageUrls.map((_, i) =>
   [
     `https://moxie2ks.synology.me/wedding/gallery/${i}-320.webp 960w`,
@@ -83,7 +83,7 @@ onMount(async () => {
         width={imageWidth}
         height={imageWidth}
         on:click={openPhotoSwipe(index)}
-        hidden={index >= 15 && !showMorePhotos}
+        hidden={index >= 12 && !showMorePhotos}
       />
     {/each}
   </div>
@@ -120,7 +120,7 @@ onMount(async () => {
 </section>
 <section class="flex-center" style="padding-bottom:2%;">
   <div class="toggle-button-container">
-    {#if imageUrls.length > 14}
+    {#if imageUrls.length > 11}
       <button
         class="toggle-button"
         on:click={() => {
