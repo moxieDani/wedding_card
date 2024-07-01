@@ -1,5 +1,8 @@
 # 모바일 청첩장
 
+## URL
+### https://moxiedani.github.io/wedding_card
+
 ## 사용법
 1. root에 .env 파일 생성
 2. .env 파일에 아래 정보를 입력 - 각 정보는 해당 서비스에 직접 가입하여 얻어내야 합니다.
@@ -46,5 +49,5 @@ VITE_APP_GOOGLE_FORM_ADDRESS=<Goole form address>
 
 ## 참고링크
 
-- https://github.com/young-do/seohye-s2-youngdo
-  - 많은 도움이 되었습니다. 감사합니다.
+https://github.com/young-do/seohye-s2-youngdo  
+많은 도움이 되었습니다. 감사합니다.
