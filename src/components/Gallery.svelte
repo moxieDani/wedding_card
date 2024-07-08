@@ -153,7 +153,10 @@ onMount(async () => {
   color: #111;
 }
 .gallery img {
+  width: 100%;
+  height: auto;
   object-fit: cover;
+  aspect-ratio: 1;
 }
 .toggle-button {
   border: 1px solid #f7f7f7; /* 테두리 색상 변경 */

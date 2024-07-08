@@ -85,7 +85,7 @@ onMount(() => {
   position: relative;
   width: 100%;
   height: 100vh;
-  overflow: auto;
+  overflow: hidden;
 }
 
 .background {

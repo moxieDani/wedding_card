@@ -41,3 +41,10 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+@media (min-width: 768px) {
+  body {
+    width: 40%;
+    margin: 0 auto;
+  }
+}
