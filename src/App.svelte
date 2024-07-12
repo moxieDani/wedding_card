@@ -20,6 +20,13 @@
     document.documentElement.style.setProperty('--vh', `${vh}px`);
   };
 
+  function getDDay(): number {
+    const targetDate = new Date(2024, 9-1, 7);  // 월은 0부터 시작하므로 9월은 9-1로 설정
+    const currentDate = new Date();
+    const timeDifference = targetDate.getTime() - currentDate.getTime();
+    return Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+  }
+
   onMount(() => {
     const parser = Bowser.getParser(window.navigator.userAgent);
     if (parser.getPlatformType() !== 'mobile') {
@@ -66,10 +73,10 @@
       <div class="seperator" />
     </div>
     <div class="fade-wrap">
-      <Youtube />
+      <Youtube DDAY={getDDay()}/>
     </div>
     <div class="fade-wrap">
-      <Calendar />
+      <Calendar DDAY={getDDay()}/>
     </div>
     <div class="fade-wrap">
       <Map />

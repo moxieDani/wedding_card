@@ -1,19 +1,13 @@
 <script lang="ts">
+  export let DDAY = 1;
+
   function getTdClass(index: number, day: number): string {
     let classes = [];
     if (index === 0) classes.push('weekend');
     if (day === 7) classes.push('today', 'current-day', 'active', 'hover');
     return classes.join(' ');
   }
-  
-  function getDDay(): number {
-    const targetDate = new Date(2024, 9-1, 7);  // 월은 0부터 시작하므로 9월은 9-1로 설정
-    const currentDate = new Date();
-    const timeDifference = targetDate.getTime() - currentDate.getTime();
-    return Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
-  }
 
-  let DDAY = getDDay();
   const daysOfWeek = ['S', 'M', 'T', 'W', 'T', 'F', 'Sa'];
   const weeks = [
     [1, 2, 3, 4, 5, 6, 7],
